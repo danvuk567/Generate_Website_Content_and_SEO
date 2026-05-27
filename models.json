@@ -1,0 +1,150 @@
+{
+  "OpenAI": {
+    "gpt-5.4-mini": {
+      "Company": "OpenAI",
+      "Input": 0.75,
+      "Output": 4.50,
+      "Description": "High-quality GPT-5 model offering strong reasoning, professional content creation, editing, SEO writing, and multimodal understanding. Excellent balance of writing quality, speed, and cost for advanced business and creative workflows."
+    },
+    "gpt-5.4-nano": {
+      "Company": "OpenAI",
+      "Input": 0.20,
+      "Output": 1.25,
+      "Description": "Compact GPT-5 model optimized for speed and cost efficiency. Best for lightweight reasoning, extraction, formatting, validation, and utility tasks rather than premium-quality creative writing."
+    },
+    "gpt-4o-mini": {
+      "Company": "OpenAI",
+      "Input": 0.15,
+      "Output": 0.60,
+      "Description": "Affordable, fast, and versatile OpenAI model with strong general writing, editing, summarization, and structured-output capabilities. Well-suited for high-volume content generation and business workflows."
+    },
+    "gpt-4.1-nano": {
+      "Company": "OpenAI",
+      "Input": 0.05,
+      "Output": 0.20,
+      "Description": "Ultra-fast and lowest-cost OpenAI model designed for lightweight tasks such as classification, tagging, extraction, validation, and simple automation workflows. Not recommended for advanced content generation or editing."
+    }
+  },
+  "Google": {
+    "gemini-3-flash-preview": {
+      "Company": "Google",
+      "Input": 0.50,
+      "Output": 3.00,
+      "Description": "High-intelligence fast model optimized for real-time generation, retrieval-augmented tasks, and high-quality content drafting with strong reasoning and grounding. Best used for production-level content generation where speed and quality must both be high."
+    },
+    "gemini-2.5-flash": {
+      "Company": "Google",
+      "Input": 0.30,
+      "Output": 2.50,
+      "Description": "Balanced reasoning model with strong performance for structured content generation, summarization, and light-to-medium writing tasks. Supports long context (up to 1M tokens) and is well-suited for multi-step workflows such as research → draft → revise pipelines."
+    },
+    "gemini-2.5-flash-lite": {
+      "Company": "Google",
+      "Input": 0.10,
+      "Output": 0.40,
+      "Description": "Ultra-low cost, high-throughput model optimized for simple, repetitive tasks such as classification, extraction, formatting, validation, and lightweight summarization. Not suitable for high-quality content writing or editorial work."
+    },
+    "gemini-1.5-pro": {
+        "Company": "Google",
+        "Input": 0.0,
+        "Output": 0.0,
+        "Description": "High-quality reasoning and writing model designed for long-form content, complex analysis, editing, and SEO content generation. Excellent for polished outputs and multi-step agent workflows."
+    },
+    "gemini-1.5-flash": {
+        "Company": "Google",
+        "Input": 0.0,
+        "Output": 0.0,
+        "Description": "Ultra-fast and cost-efficient model optimized for high-volume tasks such as summarization, extraction, and lightweight content generation. Best used in pipeline stages where speed matters more than writing quality."
+    }
+  },
+  "HuggingFace": {
+    "Qwen/Qwen2.5-VL-72B-Instruct": {
+      "Company": "Alibaba",
+      "Input": 0.04,
+      "Output": 4.00,
+      "Description": "High-end vision-language model for multimodal understanding. Best for document parsing, image analysis, and complex structured extraction."
+    },
+    "Qwen/Qwen2.5-32B-Instruct": {
+      "Company": "Alibaba",
+      "Input": 0.10,
+      "Output": 0.35,
+      "Description": "Balanced general-purpose reasoning model. Good for content generation, summarization, and agent workflows."
+    },
+    "Qwen/Qwen2.5-Coder-32B-Instruct": {
+      "Company": "Alibaba",
+      "Input": 0.06,
+      "Output": 0.20,
+      "Description": "Strong coding and structured reasoning model. Excellent for JSON generation, tool use, and logic-heavy tasks. Very reliable for LangGraph nodes requiring strict output formats."
+    },
+    "meta-llama/Llama-3.1-70B-Instruct": {
+      "Company": "Meta",
+      "Input": 0.10,
+      "Output": 0.32,
+      "Description": "High-quality reasoning and writing model for editing, content generation, and agent workflows."
+    },
+    "meta-llama/Llama-3.1-8B-Instruct": {
+      "Company": "Meta",
+      "Input": 0.03,
+      "Output": 0.08,
+      "Description": "Fast lightweight reasoning model for routing and simple generation."
+    },
+    "mistralai/Mixtral-8x7B-Instruct-v0.1": {
+      "Company": "Mistral",
+      "Input": 0.06,
+      "Output": 0.20,
+      "Description": "Mixture-of-Experts model with strong reasoning ability. Great for structured writing and multi-step agent workflows."
+    },
+    "mistralai/Mistral-7B-Instruct-v0.2": {
+      "Company": "Mistral",
+      "Input": 0.02,
+      "Output": 0.06,
+      "Description": "Efficient general-purpose model. Best for summarization, formatting, and lightweight generation tasks."
+    },
+    "microsoft/phi-3-medium-4k-instruct": {
+      "Company": "Microsoft",
+      "Input": 0.05,
+      "Output": 0.12,
+      "Description": "Balanced reasoning model for structured tasks and moderate content generation. Good for cost-efficient agent steps."
+    },
+    "microsoft/phi-3-mini-4k-instruct": {
+      "Company": "Microsoft",
+      "Input": 0.01,
+      "Output": 0.03,
+      "Description": "Ultra-efficient small model for classification and lightweight reasoning. Ideal for routing, validation, and preprocessing tasks."
+    }
+  },
+  "Groq": {
+    "qwen/Qwen3-Coder-32B": {
+      "Company": "Alibaba",
+      "Input": 0.29,
+      "Output": 0.59,
+      "Description": "Strong structured reasoning model for code and JSON generation."
+    },
+    "llama3-70b-8192": {
+      "Company": "Meta",
+      "Input": 0.11,
+      "Output": 0.34,
+      "Description": "High-quality reasoning and content generation model."
+    },
+    "llama3-8b-8192": {
+      "Company": "Meta",
+      "Input": 0.05,
+      "Output": 0.08,
+      "Description": "Ultra-fast lightweight model for routing, classification, and simple tasks."
+    },
+    "mixtral-8x7b-32768": {
+      "Company": "Mistral",
+      "Input": 0.27,
+      "Output": 0.27,
+      "Description": "Mixture-of-Experts model optimized for long context reasoning and structured output."
+    }
+  },
+  "Ollama": {
+    "gemma4:e2b": {
+      "Company": "Local (Ollama)",
+      "Input": 0.0,
+      "Output": 0.0,
+      "Description": "Local Ollama model used for fast lightweight generation and routing tasks. Maps to a locally hosted model (not a cloud API)."
+    }  
+  }
+}

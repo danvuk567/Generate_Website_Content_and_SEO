@@ -1,0 +1,16 @@
+# Frontend
+streamlit
+
+# Core Logic & Orchestration
+langchain_core
+langgraph
+langchain_community
+typing-extensions
+
+# AI Providers
+langchain-openai
+langchain-google-genai
+langchain-groq
+langchain-huggingface
+
+

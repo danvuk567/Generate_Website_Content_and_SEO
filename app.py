@@ -1,6 +1,6 @@
 
-from src.config import create_langchain_llm
-from src.agent_runner import run_agent
+from src.create_agent import create_langchain_llm
+from src.run_workflow import run_workflow
 from src.build_graph import build_graph
 import re
 import json
@@ -188,7 +188,7 @@ def model_selector(models_data: dict, providers: list) -> tuple:
         tuple: (provider_name, model_name) or (provider_name, None) if no model selected.
     """
 
-    with st.expander("LLM Providers", expanded=True):
+    with st.expander("Model Selection", expanded=True):
         #with st.container(border=True):
         # 1. Initialize Provider Selection
         provider = st.selectbox(
@@ -205,9 +205,18 @@ def model_selector(models_data: dict, providers: list) -> tuple:
 
         # 3. Render Model Selection
         model = st.selectbox(
-            "LLM Model", 
+            "LLM", 
             options, 
             key="model"
+        )
+
+        # 4. Implement a slider for LLM temperature for Designer agent with a default value of 0.3 and step of 0.1
+        temperature = st.slider(
+            "Temperature (Creativity Level)",
+            0.0,
+            1.0,
+            0.3,
+            step=0.1
         )
 
         # 5. UI Feedback: Show model details if a valid selection is made
@@ -216,7 +225,7 @@ def model_selector(models_data: dict, providers: list) -> tuple:
             model_info = provider_models.get(model, {})
             render_model_description(model_info, provider)
 
-            return provider, model
+            return provider, model, temperature
         else:
             st.stop()
 
@@ -443,7 +452,7 @@ def parse_cities(text: str) -> list[str]:
 
 # Set page configuration
 st.set_page_config(
-    page_title="🤖 Generate Website Content and SEO",
+    page_title="🤖 AI Website Content Generation and Search Engine Optimization (SEO)",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -452,13 +461,17 @@ st.set_page_config(
 initialize_inputs()
 
 # Set columns for header sizing
-col1, col2, col3 = st.columns([1, 10, 1])
+col1, col2, col3 = st.columns([1, 15, 1])
 
 with col2:
-    st.header("AI Website Content Generation and Search Engine Optimization (SEO)")
+    st.markdown(f"""
+        <div style="display: flex; align-items: center;">
+            <h2 style="margin: 0;">🤖 AI Website Content Generation and Search Engine Optimization (SEO)</h2>
+        </div>
+    """, unsafe_allow_html=True)
 
 # Set columns for description and content generation box
-col1, col2, col3 = st.columns([1, 6, 1])
+col1, col2, col3 = st.columns([1, 8, 1])
 
 description = """
     This Streamlit application generates website content using multiple AI agents.
@@ -485,7 +498,7 @@ with col2:
         <div style="
             border: 0px;
             border-radius: 10px;
-            padding: 20px;
+            padding: 10px;
         ">
         {description}
         </div>
@@ -501,27 +514,24 @@ with st.sidebar:
     # Load model options
     models_data = load_models("models.json")
 
-    st.header("Model Selection")
-    
-    # Get provider and model name from selector
-    llm_provider, model_name = model_selector(models_data, st.session_state["providers"])
+    st.subheader("Large Language Model (LLM) Selection")
+    st.write("Choose your AI model for the workflow. Then adjust the temperature (creativity level) for the initial draft generation.")
+
+    # Get provider, model name and selected temperature from selector
+    llm_provider, model_name, temperature2 = model_selector(models_data, st.session_state["providers"])
 
     # Set default LLM temperature of all agents except Designer
     temperature1 = 0.3
     llm1 = create_langchain_llm(llm_provider=llm_provider, model_name=model_name, temperature=temperature1)
     
-    # Implement a slider for LLM temperature for Designer agent with a default value of 0.3 and step of 0.1
-    temperature2 = st.slider(
-        "Temperature (Creativity Level)",
-        0.0,
-        1.0,
-        0.3,
-        step=0.1
-    )
-
     # Get LLM for Designer agent
     llm2 = create_langchain_llm(llm_provider=llm_provider, model_name=model_name, temperature=temperature2)
     
+    st.divider()
+
+    st.subheader("Business Details Selection")
+    st.write("Fill in the business details below to help with content generation. Select the no. of options generated for the final draft.")
+
     # Input form for business details
     with st.form("input_form"):
 
@@ -594,8 +604,8 @@ with col2:
             # Build the graph
             graph = build_graph(llm1, llm2)
 
-            # Run the agent with initial inputs
-            run_agent(
+            # Run the workflow with initial inputs
+            run_workflow(
                 graph,
                 st.session_state.query,
                 st.session_state.business_name,

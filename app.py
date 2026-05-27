@@ -267,7 +267,7 @@ def initialize_inputs():
     if "missing_fields" not in st.session_state:
         st.session_state.missing_fields = []
     if "providers" not in st.session_state:
-        st.session_state["providers"] = ["OpenAI", "Google", "Groq", "HuggingFace", "Ollama"]
+        st.session_state["providers"] = ["OpenAI", "Google", "Groq", "HuggingFace"]
 
 
 def validate_missing_inputs():

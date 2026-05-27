@@ -1,4 +1,4 @@
-from src.config import GraphState
+from src.schemas import GraphState
 from src.graph_functions import search_node, designer_node, editor_node, revision_node, seo_node, city_router, revision_router
 from langgraph.graph import StateGraph, START, END
 

@@ -1,7 +1,7 @@
 
 from langchain_community.utilities.tavily_search import TavilySearchAPIWrapper
 from langchain_core.tools import tool
-from src.config import tavily_api_key
+from src.config import get_api_key
 import os
 
 # The function `filter_data` is a helper function that is used by the search_website_content function to filter out websites, using keywords, that are not directly business domains.
@@ -58,7 +58,7 @@ def search_website_content(query: str, business_type: str, city: str, province: 
         max_sites: Maximum number of sites to return (default: 5)
     """
 
-    os.environ["TAVILY_API_KEY"] = tavily_api_key
+    os.environ["TAVILY_API_KEY"] = get_api_key("TAVILY_API_KEY")
     
     full_query = f"{business_type} in {city}, {province}, {country}: {query}"
     

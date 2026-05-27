@@ -69,6 +69,31 @@ class GraphState(TypedDict):
     max_revisions: int
 
 
+def get_api_key(key_name):
+    """
+    Retrieves an API key from Streamlit secrets or environment variables.
+
+    This function first attempts to fetch the requested key from Streamlit's
+    secrets management system (`st.secrets`). If the key is not found there,
+    it falls back to reading the value from environment variables via
+    `os.getenv`.
+
+    This allows the function to work seamlessly in both:
+    - Streamlit Cloud / local Streamlit apps (using `st.secrets`)
+    - Traditional Python environments (using `.env` or system environment variables)
+
+    Args:
+        key_name (str): The name of the secret key to retrieve (e.g., "TAVILY_API_KEY").
+
+    Returns:
+        str | None: The value of the API key if found, otherwise None.
+    """
+    
+    return st.secrets.get(
+        key_name,
+        os.getenv(key_name)
+)
+
 def create_langchain_llm(
     llm_provider: str = "OpenAI",
     model_name: str = None,
@@ -121,7 +146,7 @@ def create_langchain_llm(
     if llm_provider == "Ollama":
         api_key = "local-no-key-required"
     else:
-        api_key = st.secrets[api_key_name]
+        api_key = get_api_key(api_key_name)
 
     if not api_key:
         raise ValueError(

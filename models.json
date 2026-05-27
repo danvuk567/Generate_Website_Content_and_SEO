@@ -138,13 +138,5 @@
       "Output": 0.27,
       "Description": "Mixture-of-Experts model optimized for long context reasoning and structured output."
     }
-  },
-  "Ollama": {
-    "gemma4:e2b": {
-      "Company": "Local (Ollama)",
-      "Input": 0.0,
-      "Output": 0.0,
-      "Description": "Local Ollama model used for fast lightweight generation and routing tasks. Maps to a locally hosted model (not a cloud API)."
-    }  
   }
 }

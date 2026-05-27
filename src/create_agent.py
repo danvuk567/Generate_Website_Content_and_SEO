@@ -1,5 +1,6 @@
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.prompts import ChatPromptTemplate
+from src.utils import get_api_key
 import os
 
 

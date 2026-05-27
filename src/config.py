@@ -217,8 +217,6 @@ def create_langchain_llm(
         temperature=temperature
     )
 
-tavily_api_key = st.secrets["TAVILY_API_KEY"]
-
 
 
 
